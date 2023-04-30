@@ -1,0 +1,23 @@
+chrome.runtime.onMessage.addListener((message, sender) => {
+    if (message.from === "popup" && message.query === "eye_dropper_clicked") {
+
+        setTimeout(() => {
+            // const colorPicker = new ColorPicker();
+            const eyeDropper = new EyeDropper();
+            // result may be colorList or color-code
+            eyeDropper.open().then(result => {
+                chrome.storage.local.get("color_hex_code", (resp) => {
+                    if (resp.color_hex_code && resp.color_hex_code.length > 0) {
+                        chrome.storage.local.set({ "color_hex_code": [...resp.color_hex_code, result.sRGBHex] })
+                    }
+                    else {
+                        console.log("no")
+                        chrome.storage.local.set({ "color_hex_code": [result.sRGBHex] })
+                    }
+                })
+            }).catch(e => {
+                console.log(e)
+            })
+        }, 500);
+    }
+})
