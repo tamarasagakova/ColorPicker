@@ -14,11 +14,13 @@ window.addEventListener('DOMContentLoaded', () => {
         if (isDarkMode) {
             // Switch to light mode
             document.body.style.background = "white";
+            mainDiv.style.color = "black";
             darkModeIcon.classList.remove("fa-moon");
             darkModeIcon.classList.add("fa-sun");
         } else {
             // Switch to dark mode
             document.body.style.background = "#222222";
+            mainDiv.style.color = "white";
             darkModeIcon.classList.remove("fa-sun");
             darkModeIcon.classList.add("fa-moon");
         }
@@ -110,7 +112,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
             const clearIcon = document.createElement("i");
             clearIcon.classList.add("fa-regular", "fa-trash-can");
-            clearIcon.style.color = "#000000";
             clearIcon.style.fontSize = "20px";
             clearIcon.style.cursor = "pointer";
 
