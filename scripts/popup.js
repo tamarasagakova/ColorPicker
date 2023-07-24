@@ -6,6 +6,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const buttonDiv = document.getElementById("main-button-div");
     const colorList = document.getElementById("color-code");
     const darkModeIcon = document.getElementById("dark-mode-icon");
+    const title = document.querySelector("#main-div>h1");
     let messageDisplayed = false;
 
     let isDarkMode = false; // Variable to track the dark mode state
@@ -17,12 +18,14 @@ window.addEventListener('DOMContentLoaded', () => {
             mainDiv.style.color = "black";
             darkModeIcon.classList.remove("fa-moon");
             darkModeIcon.classList.add("fa-sun");
+            title.style.webkitTextStroke = "1px black";
         } else {
             // Switch to dark mode
             document.body.style.background = "#222222";
             mainDiv.style.color = "white";
             darkModeIcon.classList.remove("fa-sun");
             darkModeIcon.classList.add("fa-moon");
+            title.style.webkitTextStroke = "0.6px white";
         }
         isDarkMode = !isDarkMode; // Toggle the dark mode state
     };
