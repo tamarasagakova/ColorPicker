@@ -68,15 +68,26 @@ window.addEventListener('DOMContentLoaded', () => {
 
         if (resp.color_hex_code && resp.color_hex_code.length > 0) {
             resp.color_hex_code.forEach(hexCode => {
-                const liElem = document.createElement("li")
-                liElem.innerText = hexCode
-                liElem.style.backgroundColor = hexCode
+                const liElem = document.createElement("li");
+                liElem.style.backgroundColor = hexCode;
                 liElem.addEventListener("click", () => {
                     navigator.clipboard.writeText(hexCode);
                     produceChild("Hex code has been copied", "#161b1d", "#ffffff", "10px 0", "#161b1d");
-                })
-                colorList.appendChild(liElem)
-            })
+                });
+
+                liElem.style.height = "20px";
+
+                // Add event listeners for mouseover and mouseout
+                liElem.addEventListener("mouseover", () => {
+                    liElem.innerText = hexCode;
+                });
+
+                liElem.addEventListener("mouseout", () => {
+                    liElem.innerText = ""; // Set innerText to an empty string to hide it
+                });
+
+                colorList.appendChild(liElem);
+            });
 
             const clearIcon = document.createElement("i");
             clearIcon.classList.add("fa-regular", "fa-trash-can");
