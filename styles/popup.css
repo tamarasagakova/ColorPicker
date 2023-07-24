@@ -102,35 +102,3 @@ body {
     font-size: 14px;
     border-radius: 10px;
 }
-
-/* START -- CLEAR BUTTON */
-#clearButton {
-    width: 100%;
-    background-color: transparent;
-    border-radius: 10px;
-    box-shadow: transparent 0 0 0 3px, rgba(18, 18, 18, .1) 0 6px 20px;
-    color: black;
-    cursor: pointer;
-    font-size: 19px;
-    font-weight: 700;
-    line-height: 1;
-    margin: 0;
-    padding: 5px 7px;
-    margin-bottom: 6px;
-    outline: none;
-    text-align: center;
-    text-decoration: none;
-    border: 1px solid black;
-
-    background: linear-gradient(90deg, #00C0FF 0%, #FFCF00 49%, #f01919 100%);;
-    background-clip: border-box;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -webkit-text-stroke: 1px black;
-}
-
-#clearButton:hover {
-    font-size: 20px;
-    margin-bottom: 5px;
-}
-/* END -- CLEAR BUTTON */
