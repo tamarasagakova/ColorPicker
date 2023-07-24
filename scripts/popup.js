@@ -7,20 +7,21 @@ window.addEventListener('DOMContentLoaded', () => {
     const colorList = document.getElementById("color-code");
     let messageDisplayed = false;
 
-    const produceChild = (msg, textColor, backgroundColor, margin) => {
+    const produceChild = (msg, textColor, backgroundColor, margin, borderColor) => {
         if (messageDisplayed) {
             return;
         }
 
         const errorLabel = document.createElement("p");
         errorLabel.setAttribute("class", "errorLabel");
-        errorLabel.style.color = textColor || "#0b0610"; 
+        errorLabel.style.color = textColor || "#0b0610";
         errorLabel.style.backgroundColor = backgroundColor || "ffffff";
-        errorLabel.style.padding = "8px"; 
-        errorLabel.style.borderRadius = "4px"; 
-        errorLabel.style.margin = margin || "0"; 
+        errorLabel.style.padding = "8px";
+        errorLabel.style.borderRadius = "7px";
+        errorLabel.style.margin = margin || "0";
+        errorLabel.style.border = borderColor ? `2px solid ${borderColor}` : "2px solid transparent";
         errorLabel.innerText = msg;
-    
+
         mainDiv.appendChild(errorLabel);
         messageDisplayed = true;
         setTimeout(() => {
@@ -45,8 +46,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
             button.addEventListener("click", () => {
                 if (!window.EyeDropper) {
-                    // HERE
-                    produceChild("Your browser does not support the ClolorPicker API", "#ffffff", "#e83a30", "10px 0");
+                    produceChild("Your browser does not support the ClolorPicker API", "#161b1d", "#ffffff", "10px 0", "#161b1d");
                     return
                 }
 
@@ -73,8 +73,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 liElem.style.backgroundColor = hexCode
                 liElem.addEventListener("click", () => {
                     navigator.clipboard.writeText(hexCode);
-                    //HERE
-                    produceChild("Hex code is copied to clipboard!", "#161b1d", "#ffffff", "10px 0");
+                    produceChild("Hex code has been copied", "#161b1d", "#ffffff", "10px 0", "#161b1d");
                 })
                 colorList.appendChild(liElem)
             })
@@ -88,12 +87,12 @@ window.addEventListener('DOMContentLoaded', () => {
             trashDiv.appendChild(clearIcon);
             trashDiv.style.display = "flex";
             trashDiv.style.justifyContent = "center";
-            
+
             clearIcon.addEventListener("click", () => {
                 chrome.storage.local.remove("color_hex_code");
                 window.close();
             });
-            
+
         }
 
     })
