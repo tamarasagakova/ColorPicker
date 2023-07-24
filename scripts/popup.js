@@ -5,18 +5,29 @@ window.addEventListener('DOMContentLoaded', () => {
     const trashDiv = document.getElementById("trash-div");
     const buttonDiv = document.getElementById("main-button-div");
     const colorList = document.getElementById("color-code");
+    let messageDisplayed = false;
 
-    const GiveMetheChild = (color, msg) => {
-        const errorLabel = document.createElement("p")
-        errorLabel.setAttribute("class", "errorLabel")
-        errorLabel.style.backgroundColor = color
-        errorLabel.innerText = msg
+    const produceChild = (msg, textColor, backgroundColor, margin) => {
+        if (messageDisplayed) {
+            return;
+        }
 
-        mainDiv.appendChild(errorLabel)
+        const errorLabel = document.createElement("p");
+        errorLabel.setAttribute("class", "errorLabel");
+        errorLabel.style.color = textColor || "#0b0610"; 
+        errorLabel.style.backgroundColor = backgroundColor || "ffffff";
+        errorLabel.style.padding = "8px"; 
+        errorLabel.style.borderRadius = "4px"; 
+        errorLabel.style.margin = margin || "0"; 
+        errorLabel.innerText = msg;
+    
+        mainDiv.appendChild(errorLabel);
+        messageDisplayed = true;
         setTimeout(() => {
-            mainDiv.removeChild(errorLabel)
-        }, 2000)
-    }
+            mainDiv.removeChild(errorLabel);
+            messageDisplayed = false;
+        }, 2000);
+    };
 
     chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
         const tab = tabs[0]
@@ -34,7 +45,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
             button.addEventListener("click", () => {
                 if (!window.EyeDropper) {
-                    GiveMetheChild("#ad5049", 'Your browser does not support the ClolorPicker API')
+                    // HERE
+                    produceChild("Your browser does not support the ClolorPicker API", "#ffffff", "#e83a30", "10px 0");
                     return
                 }
 
@@ -61,19 +73,11 @@ window.addEventListener('DOMContentLoaded', () => {
                 liElem.style.backgroundColor = hexCode
                 liElem.addEventListener("click", () => {
                     navigator.clipboard.writeText(hexCode);
-                    GiveMetheChild("#e19526", "Hex code is copied to clipboard!")
+                    //HERE
+                    produceChild("Hex code is copied to clipboard!", "#161b1d", "#ffffff", "10px 0");
                 })
                 colorList.appendChild(liElem)
             })
-
-            /*const clearButton = document.createElement("button")
-            clearButton.innerText = "Clear Memory" 
-            clearButton.setAttribute("id", "clearButton")
-            clearButton.addEventListener("click", () => {
-                chrome.storage.local.remove("color_hex_code")
-                window.close()
-            })
-            mainDiv.appendChild(clearButton)*/
 
             const clearIcon = document.createElement("i");
             clearIcon.classList.add("fa-regular", "fa-trash-can");
@@ -84,14 +88,11 @@ window.addEventListener('DOMContentLoaded', () => {
             trashDiv.appendChild(clearIcon);
             trashDiv.style.display = "flex";
             trashDiv.style.justifyContent = "center";
-            //trashDiv.style.alignItems = "flex-end";
-
-            // Add click event to the icon
+            
             clearIcon.addEventListener("click", () => {
                 chrome.storage.local.remove("color_hex_code");
                 window.close();
             });
-
             
         }
 
