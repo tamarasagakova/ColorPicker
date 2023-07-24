@@ -91,15 +91,50 @@ window.addEventListener('DOMContentLoaded', () => {
             clearIcon.style.color = "#000000";
             clearIcon.style.fontSize = "20px";
             clearIcon.style.cursor = "pointer";
-
+            
+            const moonIcon = document.createElement("i");
+            moonIcon.classList.add("fa-regular", "fa-moon");
+            moonIcon.style.color = "#000000";
+            moonIcon.style.fontSize = "20px";
+            moonIcon.style.cursor = "pointer";
+            
+            const sunIcon = document.createElement("i");
+            sunIcon.classList.add("fa-regular", "fa-sun");
+            sunIcon.style.color = "#000000";
+            sunIcon.style.fontSize = "20px";
+            sunIcon.style.cursor = "pointer";
+            
             trashDiv.appendChild(clearIcon);
+            trashDiv.appendChild(moonIcon);
             trashDiv.style.display = "flex";
+            trashDiv.style.gap = "10px";
             trashDiv.style.justifyContent = "center";
-
+            
+            let isMoonIconShown = true; // Variable to track the icon state
+            
+            const toggleIcon = () => {
+                if (isMoonIconShown) {
+                    // Remove the moon icon and show the sun icon
+                    trashDiv.removeChild(moonIcon);
+                    trashDiv.appendChild(sunIcon);
+                } else {
+                    // Remove the sun icon and show the moon icon
+                    trashDiv.removeChild(sunIcon);
+                    trashDiv.appendChild(moonIcon);
+                }
+                isMoonIconShown = !isMoonIconShown; // Toggle the icon state
+            };
+        
+            // Add click event listener to the moonIcon
+            moonIcon.addEventListener("click", toggleIcon);
+            sunIcon.addEventListener("click", toggleIcon);
+        
             clearIcon.addEventListener("click", () => {
                 chrome.storage.local.remove("color_hex_code");
                 window.close();
             });
+
+
 
         }
 
