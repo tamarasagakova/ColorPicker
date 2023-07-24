@@ -5,7 +5,29 @@ window.addEventListener('DOMContentLoaded', () => {
     const trashDiv = document.getElementById("trash-div");
     const buttonDiv = document.getElementById("main-button-div");
     const colorList = document.getElementById("color-code");
+    const darkModeIcon = document.getElementById("dark-mode-icon");
     let messageDisplayed = false;
+
+    let isDarkMode = false; // Variable to track the dark mode state
+
+    const toggleDarkMode = () => {
+        if (isDarkMode) {
+            // Switch to light mode
+            document.body.style.background = "white";
+            darkModeIcon.classList.remove("fa-moon");
+            darkModeIcon.classList.add("fa-sun");
+        } else {
+            // Switch to dark mode
+            document.body.style.background = "#222222";
+            darkModeIcon.classList.remove("fa-sun");
+            darkModeIcon.classList.add("fa-moon");
+        }
+        isDarkMode = !isDarkMode; // Toggle the dark mode state
+    };
+
+    // Add click event listener to the dark mode icon
+    darkModeIcon.addEventListener("click", toggleDarkMode);
+
 
     const produceChild = (msg, textColor, backgroundColor, margin, borderColor) => {
         if (messageDisplayed) {
@@ -96,37 +118,6 @@ window.addEventListener('DOMContentLoaded', () => {
             trashDiv.style.display = "flex";
             trashDiv.style.gap = "10px";
             trashDiv.style.justifyContent = "center";
-            
-            /*const moonIcon = document.createElement("i");
-            moonIcon.classList.add("fa-regular", "fa-moon");
-            moonIcon.style.color = "#000000";
-            moonIcon.style.fontSize = "20px";
-            moonIcon.style.cursor = "pointer";
-            
-            const sunIcon = document.createElement("i");
-            sunIcon.classList.add("fa-regular", "fa-sun");
-            sunIcon.style.color = "#000000";
-            sunIcon.style.fontSize = "20px";
-            sunIcon.style.cursor = "pointer";
-            
-            let isMoonIconShown = true; // Variable to track the icon state
-            
-            const toggleIcon = () => {
-                if (isMoonIconShown) {
-                    // Remove the moon icon and show the sun icon
-                    trashDiv.removeChild(moonIcon);
-                    trashDiv.appendChild(sunIcon);
-                } else {
-                    // Remove the sun icon and show the moon icon
-                    trashDiv.removeChild(sunIcon);
-                    trashDiv.appendChild(moonIcon);
-                }
-                isMoonIconShown = !isMoonIconShown; // Toggle the icon state
-            };
-        
-            // Add click event listener to the moonIcon
-            moonIcon.addEventListener("click", toggleIcon);
-            sunIcon.addEventListener("click", toggleIcon);*/
         
             clearIcon.addEventListener("click", () => {
                 chrome.storage.local.remove("color_hex_code");
