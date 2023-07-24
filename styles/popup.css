@@ -16,6 +16,7 @@ body {
 .darkMode {
     display: flex;
     justify-content: flex-end;
+    cursor: pointer;
 }
 
 #dark-mode-icon {
