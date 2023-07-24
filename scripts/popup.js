@@ -42,7 +42,7 @@ window.addEventListener('DOMContentLoaded', () => {
         } else {
             const button = document.createElement("button")
             button.setAttribute("id", "main_button")
-            button.innerText = "Use magnifier to find desired color code!"
+            button.innerText = "Click to use magnifier to find desired color code!"
 
             button.addEventListener("click", () => {
                 if (!window.EyeDropper) {
