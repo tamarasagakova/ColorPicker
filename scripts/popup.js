@@ -2,6 +2,7 @@
 
 window.addEventListener('DOMContentLoaded', () => {
     const mainDiv = document.getElementById("main-div");
+    const trashDiv = document.getElementById("trash-div");
     const buttonDiv = document.getElementById("main-button-div");
     const colorList = document.getElementById("color-code");
 
@@ -65,14 +66,33 @@ window.addEventListener('DOMContentLoaded', () => {
                 colorList.appendChild(liElem)
             })
 
-            const clearButton = document.createElement("button")
+            /*const clearButton = document.createElement("button")
             clearButton.innerText = "Clear Memory" 
             clearButton.setAttribute("id", "clearButton")
             clearButton.addEventListener("click", () => {
                 chrome.storage.local.remove("color_hex_code")
                 window.close()
             })
-            mainDiv.appendChild(clearButton)
+            mainDiv.appendChild(clearButton)*/
+
+            const clearIcon = document.createElement("i");
+            clearIcon.classList.add("fa-regular", "fa-trash-can");
+            clearIcon.style.color = "#000000";
+            clearIcon.style.fontSize = "20px";
+            clearIcon.style.cursor = "pointer";
+
+            trashDiv.appendChild(clearIcon);
+            trashDiv.style.display = "flex";
+            trashDiv.style.justifyContent = "center";
+            //trashDiv.style.alignItems = "flex-end";
+
+            // Add click event to the icon
+            clearIcon.addEventListener("click", () => {
+                chrome.storage.local.remove("color_hex_code");
+                window.close();
+            });
+
+            
         }
 
     })
