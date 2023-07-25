@@ -9,44 +9,58 @@ window.addEventListener('DOMContentLoaded', () => {
     const title = document.querySelector("#main-div>h1");
     let messageDisplayed = false;
 
-    let isDarkMode = false; // Variable to track the dark mode state
+
+    // Variable to track the dark mode state
+    let isDarkMode = JSON.parse(localStorage.getItem("dark-mode") || "false");
+
+
+    const enableDarkMode = () => {
+
+        localStorage.setItem("dark-mode", JSON.stringify(true));
+        document.body.style.background = "#222222";
+        mainDiv.style.color = "white";
+        darkModeIcon.classList.remove("fa-sun");
+        darkModeIcon.classList.add("fa-moon");
+        title.style.webkitTextStroke = "0.6px white";
+        //colorList.classList.add("li-dark-mode");
+        //colorList.classList.remove("li-light-mode");
+      };
+
+      const disableDarkMode = () => {
+        localStorage.setItem("dark-mode",JSON.stringify(false));
+        document.body.style.background = "rgb(248, 248, 237)";
+        mainDiv.style.color = "black";
+        darkModeIcon.classList.remove("fa-moon");
+        darkModeIcon.classList.add("fa-sun");
+        title.style.webkitTextStroke = "1px black";
+        //colorList.classList.add("li-light-mode");
+        //colorList.classList.remove("li-dark-mode");
+      };
+
 
     const toggleDarkMode = () => {
-        const liElements = document.querySelectorAll("#color-code li");
-        const msg = document.querySelector("li");
         if (isDarkMode) {
             // Switch to light mode
-            document.body.style.background = "rgb(248, 248, 237)";
-            mainDiv.style.color = "black";
-            darkModeIcon.classList.remove("fa-moon");
-            darkModeIcon.classList.add("fa-sun");
-            title.style.webkitTextStroke = "1px black";
-            msg.style.color = "black";
-
-            liElements.forEach(li => {
-                li.classList.remove("li-dark-mode");
-                li.classList.add("li-light-mode");
-            });
+            disableDarkMode();
 
         } else {
             // Switch to dark mode
-            document.body.style.background = "#222222";
-            mainDiv.style.color = "white";
-            darkModeIcon.classList.remove("fa-sun");
-            darkModeIcon.classList.add("fa-moon");
-            title.style.webkitTextStroke = "0.6px white";
-            msg.style.color = "white";
+            enableDarkMode();
 
-            liElements.forEach(li => {
-                li.classList.remove("li-light-mode");
-                li.classList.add("li-dark-mode");
-            });
         }
         isDarkMode = !isDarkMode; // Toggle the dark mode state
+        localStorage.setItem("dark-mode", JSON.stringify(isDarkMode)); // Save the state to localStorage
+
+        
     };
 
     // Add click event listener to the dark mode icon
     darkModeIcon.addEventListener("click", toggleDarkMode);
+
+    if (isDarkMode === true) {
+        enableDarkMode(); // set state of darkMode on page load
+    }
+
 
 
     const produceChild = (msg) => {
