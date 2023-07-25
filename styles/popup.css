@@ -4,7 +4,7 @@
 }
 
 body {
-    background: white;
+    background: rgb(248, 248, 237);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -100,10 +100,12 @@ body {
 
 .li-light-mode {
     text-shadow: 0.8px 0.8px 0 #fff, -0.8px -0.8px 0 #fff, 0.8px -0.8px 0 #fff, -0.8px 0.8px 0 #fff;
+    border: 0.05px solid black;
 }
   
 .li-dark-mode {
     text-shadow: 0.8px 0.8px 0 #000, -0.8px -0.8px 0 #000, 0.8px -0.8px 0 #000, -0.8px 0.8px 0 #000;
+    border: 0.05px solid white;
 }
 /* END -- FOUND COLOR CODES */
 
