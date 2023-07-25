@@ -1,7 +1,7 @@
-#   Color Picker Extension 
+#   Color Picker Chrome Extension 
 ### A Step-by-Step Guide to Installation and Use
 ## Summary
-The Color Picker Extension is a powerful tool that allows users to easily pick colors from webpages and store them for later use. This guide will walk you through the simple process of installing and using the extension on your browser.
+The Color Picker Chrome Extension is a powerful tool that allows users to easily pick colors from webpages and store them for later use. This guide will walk you through the simple process of installing and using the extension on your browser.
 
 ## Installation
 1. Download the Extension from GitHub:
