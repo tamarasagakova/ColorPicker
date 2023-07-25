@@ -102,6 +102,9 @@ body {
     text-shadow: 0.7px 0.7px 0 #fff, -0.7px -0.7px 0 #fff, 0.7px -0.7px 0 #fff, -0.7px 0.7px 0 #fff;
     border: 0.05px solid rgb(21, 21, 21);
 }
+.p-des {
+    text-shadow: 0.7px 0.7px 0 #fff, -0.7px -0.7px 0 #fff, 0.7px -0.7px 0 #fff, -0.7px 0.7px 0 #fff;
+}
 
 /* END -- FOUND COLOR CODES */
 
