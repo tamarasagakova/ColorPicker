@@ -1,6 +1,7 @@
 :root {
     ---main-background: linear-gradient(to left, rgb(134, 4, 247), rgb(251, 158, 243));
     --rainbow: linear-gradient(to left, violet, indigo, blue, green, rgb(229, 229, 11), orange, red);
+    --shadow: 0.7px 0.7px 0 #fff, -0.7px -0.7px 0 #fff, 0.7px -0.7px 0 #fff, -0.7px 0.7px 0 #fff;
 }
 
 body {
@@ -78,6 +79,8 @@ body {
 #main-button-div{
     text-align: center;
     font-weight: 700;
+    font-size: 15px;
+    text-shadow: var(--shadow);
 }
 
 /* START -- FOUND COLOR CODES */
@@ -99,11 +102,11 @@ body {
 }
 
 .li-codes {
-    text-shadow: 0.7px 0.7px 0 #fff, -0.7px -0.7px 0 #fff, 0.7px -0.7px 0 #fff, -0.7px 0.7px 0 #fff;
+    text-shadow: var(--shadow);
     border: 0.05px solid rgb(21, 21, 21);
 }
 .p-des {
-    text-shadow: 0.7px 0.7px 0 #fff, -0.7px -0.7px 0 #fff, 0.7px -0.7px 0 #fff, -0.7px 0.7px 0 #fff;
+    text-shadow: var(--shadow);
 }
 
 /* END -- FOUND COLOR CODES */
