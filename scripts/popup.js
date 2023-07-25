@@ -12,6 +12,8 @@ window.addEventListener('DOMContentLoaded', () => {
     let isDarkMode = false; // Variable to track the dark mode state
 
     const toggleDarkMode = () => {
+        const liElements = document.querySelectorAll("#color-code li");
+        const msg = document.querySelector("li");
         if (isDarkMode) {
             // Switch to light mode
             document.body.style.background = "white";
@@ -19,6 +21,13 @@ window.addEventListener('DOMContentLoaded', () => {
             darkModeIcon.classList.remove("fa-moon");
             darkModeIcon.classList.add("fa-sun");
             title.style.webkitTextStroke = "1px black";
+            msg.style.color = "black";
+
+            liElements.forEach(li => {
+                li.classList.remove("li-dark-mode");
+                li.classList.add("li-light-mode");
+            });
+
         } else {
             // Switch to dark mode
             document.body.style.background = "#222222";
@@ -26,6 +35,12 @@ window.addEventListener('DOMContentLoaded', () => {
             darkModeIcon.classList.remove("fa-sun");
             darkModeIcon.classList.add("fa-moon");
             title.style.webkitTextStroke = "0.6px white";
+            msg.style.color = "white";
+
+            liElements.forEach(li => {
+                li.classList.remove("li-light-mode");
+                li.classList.add("li-dark-mode");
+            });
         }
         isDarkMode = !isDarkMode; // Toggle the dark mode state
     };
@@ -34,19 +49,12 @@ window.addEventListener('DOMContentLoaded', () => {
     darkModeIcon.addEventListener("click", toggleDarkMode);
 
 
-    const produceChild = (msg, textColor, backgroundColor, margin, borderColor) => {
+    const produceChild = (msg) => {
         if (messageDisplayed) {
             return;
         }
-
         const errorLabel = document.createElement("p");
         errorLabel.setAttribute("class", "errorLabel");
-        errorLabel.style.color = textColor || "#0b0610";
-        errorLabel.style.backgroundColor = backgroundColor || "ffffff";
-        errorLabel.style.padding = "8px";
-        errorLabel.style.borderRadius = "7px";
-        errorLabel.style.margin = margin || "0";
-        errorLabel.style.border = borderColor ? `2px solid ${borderColor}` : "2px solid transparent";
         errorLabel.innerText = msg;
 
         mainDiv.appendChild(errorLabel);
@@ -73,7 +81,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
             button.addEventListener("click", () => {
                 if (!window.EyeDropper) {
-                    produceChild("Your browser does not support the ClolorPicker API", "#161b1d", "#ffffff", "10px 0", "#161b1d");
+                    produceChild("Your browser does not support the ClolorPicker API");
                     return
                 }
 
@@ -95,9 +103,12 @@ window.addEventListener('DOMContentLoaded', () => {
             resp.color_hex_code.forEach(hexCode => {
                 const liElem = document.createElement("li");
                 liElem.style.backgroundColor = hexCode;
+                liElem.classList.add("li-light-mode");
+
+                
                 liElem.addEventListener("click", () => {
                     navigator.clipboard.writeText(hexCode);
-                    produceChild("Hex code has been copied", "#161b1d", "#ffffff", "10px 0", "#161b1d");
+                    produceChild("Hex code has been copied");
                 });
 
                 liElem.style.height = "20px";
