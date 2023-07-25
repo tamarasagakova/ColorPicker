@@ -16,7 +16,7 @@ window.addEventListener('DOMContentLoaded', () => {
         const msg = document.querySelector("li");
         if (isDarkMode) {
             // Switch to light mode
-            document.body.style.background = "white";
+            document.body.style.background = "rgb(248, 248, 237)";
             mainDiv.style.color = "black";
             darkModeIcon.classList.remove("fa-moon");
             darkModeIcon.classList.add("fa-sun");
