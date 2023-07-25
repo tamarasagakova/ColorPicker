@@ -98,15 +98,11 @@ body {
     border-radius: 5px;
 }
 
-.li-light-mode {
-    text-shadow: 0.8px 0.8px 0 #fff, -0.8px -0.8px 0 #fff, 0.8px -0.8px 0 #fff, -0.8px 0.8px 0 #fff;
-    border: 0.05px solid black;
+.li-codes {
+    text-shadow: 0.7px 0.7px 0 #fff, -0.7px -0.7px 0 #fff, 0.7px -0.7px 0 #fff, -0.7px 0.7px 0 #fff;
+    border: 0.05px solid rgb(21, 21, 21);
 }
-  
-.li-dark-mode {
-    text-shadow: 0.8px 0.8px 0 #000, -0.8px -0.8px 0 #000, 0.8px -0.8px 0 #000, -0.8px 0.8px 0 #000;
-    border: 0.05px solid white;
-}
+
 /* END -- FOUND COLOR CODES */
 
 .errorLabel {
