@@ -62,6 +62,7 @@ window.addEventListener('DOMContentLoaded', () => {
         const errorLabel = document.createElement("p");
         errorLabel.setAttribute("class", "errorLabel");
         errorLabel.innerText = msg;
+        errorLabel.classList.add("p-des");
 
         mainDiv.appendChild(errorLabel);
         messageDisplayed = true;
