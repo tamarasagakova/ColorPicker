@@ -90,26 +90,29 @@ body {
 }
 
 #color-code>li {
-    --webkit-text-fill-color: transparent;
-    --webkit-text-stroke: 1px black;
     cursor: pointer;
     text-align: center;
     padding: 2px 5px;
     font-weight: bolder;
     font-size: 15px;
-    -border: 1px solid black;
     border-radius: 5px;
-    text-shadow: 0.5px 0.5px 0 #cfcfcf, -0.5px -0.5px 0 #cfcfcf, 0.5px -0.5px 0 #cfcfcf, -0.5px 0.5px 0 #cfcfcf;
+}
+
+.li-light-mode {
+    text-shadow: 0.8px 0.8px 0 #fff, -0.8px -0.8px 0 #fff, 0.8px -0.8px 0 #fff, -0.8px 0.8px 0 #fff;
+}
+  
+.li-dark-mode {
+    text-shadow: 0.8px 0.8px 0 #000, -0.8px -0.8px 0 #000, 0.8px -0.8px 0 #000, -0.8px 0.8px 0 #000;
 }
 /* END -- FOUND COLOR CODES */
 
 .errorLabel {
-    color: white;
     font-weight: bold;
     padding: 5px;
     text-align: center;
     margin: 0;
-    margin-top: 20px;
+    margin-top: 10px;
     font-size: 14px;
     border-radius: 10px;
 }
