@@ -17,23 +17,21 @@ window.addEventListener('DOMContentLoaded', () => {
     const enableDarkMode = () => {
         localStorage.setItem("dark-mode", JSON.stringify(true));
         document.body.style.background = "#222222";
-        mainDiv.style.color = "white";
+        trashDiv.style.color = "white";
+        darkModeIcon.style.color = "white";
         darkModeIcon.classList.remove("fa-sun");
         darkModeIcon.classList.add("fa-moon");
         title.style.webkitTextStroke = "0.6px white";
-        //colorList.classList.add("li-dark-mode");
-        //colorList.classList.remove("li-light-mode");
     };
 
     const disableDarkMode = () => {
         localStorage.setItem("dark-mode", JSON.stringify(false));
         document.body.style.background = "rgb(248, 248, 237)";
-        mainDiv.style.color = "black";
+        trashDiv.style.color = "black";
+        darkModeIcon.style.color = "black";
         darkModeIcon.classList.remove("fa-moon");
         darkModeIcon.classList.add("fa-sun");
         title.style.webkitTextStroke = "1px black";
-        //colorList.classList.add("li-light-mode");
-        //colorList.classList.remove("li-dark-mode");
     };
 
 
@@ -111,7 +109,7 @@ window.addEventListener('DOMContentLoaded', () => {
             resp.color_hex_code.forEach(hexCode => {
                 const liElem = document.createElement("li");
                 liElem.style.backgroundColor = hexCode;
-                liElem.classList.add("li-light-mode");
+                liElem.classList.add("li-codes");
 
 
                 liElem.addEventListener("click", () => {
