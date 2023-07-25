@@ -9,7 +9,6 @@ chrome.runtime.onMessage.addListener((message, sender) => {
                         chrome.storage.local.set({ "color_hex_code": [...resp.color_hex_code, result.sRGBHex] })
                     }
                     else {
-                        console.log("no")
                         chrome.storage.local.set({ "color_hex_code": [result.sRGBHex] })
                     }
                 })
