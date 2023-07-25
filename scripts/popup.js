@@ -15,7 +15,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
     const enableDarkMode = () => {
-
         localStorage.setItem("dark-mode", JSON.stringify(true));
         document.body.style.background = "#222222";
         mainDiv.style.color = "white";
@@ -24,10 +23,10 @@ window.addEventListener('DOMContentLoaded', () => {
         title.style.webkitTextStroke = "0.6px white";
         //colorList.classList.add("li-dark-mode");
         //colorList.classList.remove("li-light-mode");
-      };
+    };
 
-      const disableDarkMode = () => {
-        localStorage.setItem("dark-mode",JSON.stringify(false));
+    const disableDarkMode = () => {
+        localStorage.setItem("dark-mode", JSON.stringify(false));
         document.body.style.background = "rgb(248, 248, 237)";
         mainDiv.style.color = "black";
         darkModeIcon.classList.remove("fa-moon");
@@ -35,23 +34,20 @@ window.addEventListener('DOMContentLoaded', () => {
         title.style.webkitTextStroke = "1px black";
         //colorList.classList.add("li-light-mode");
         //colorList.classList.remove("li-dark-mode");
-      };
+    };
 
 
     const toggleDarkMode = () => {
         if (isDarkMode) {
             // Switch to light mode
             disableDarkMode();
-
         } else {
             // Switch to dark mode
             enableDarkMode();
-
         }
         isDarkMode = !isDarkMode; // Toggle the dark mode state
         localStorage.setItem("dark-mode", JSON.stringify(isDarkMode)); // Save the state to localStorage
 
-        
     };
 
     // Add click event listener to the dark mode icon
@@ -60,8 +56,6 @@ window.addEventListener('DOMContentLoaded', () => {
     if (isDarkMode === true) {
         enableDarkMode(); // set state of darkMode on page load
     }
-
-
 
     const produceChild = (msg) => {
         if (messageDisplayed) {
@@ -119,7 +113,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 liElem.style.backgroundColor = hexCode;
                 liElem.classList.add("li-light-mode");
 
-                
+
                 liElem.addEventListener("click", () => {
                     navigator.clipboard.writeText(hexCode);
                     produceChild("Hex code has been copied");
@@ -147,7 +141,7 @@ window.addEventListener('DOMContentLoaded', () => {
             trashDiv.style.display = "flex";
             trashDiv.style.gap = "10px";
             trashDiv.style.justifyContent = "center";
-        
+
             clearIcon.addEventListener("click", () => {
                 chrome.storage.local.remove("color_hex_code");
                 window.close();
