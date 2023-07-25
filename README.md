@@ -38,5 +38,5 @@ Dark Mode: Click on the sun icon to enable Dark Mode and enhance your color pick
 ##
 The Color Picker Extension is a must-have tool for designers, developers, and anyone working with colors on the web. By following this guide, you can quickly install the extension and start picking and saving colors with ease. Enjoy a seamless color-picking experience!
 
-![ColorPicker guide](/images/ColorPicker-guide.gif)
+![ColorPicker guide](/assets/ColorPicker-guide.gif)
 
